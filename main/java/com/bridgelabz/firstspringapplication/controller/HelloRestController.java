@@ -1,5 +1,6 @@
 package com.bridgelabz.firstspringapplication.controller;
 
+import com.bridgelabz.firstspringapplication.dto.UserData;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,8 +20,15 @@ public class HelloRestController {
 
     //uc :3 pass name as path variable  //http://localhost:8080/hello/passName/sai
     @GetMapping("passName/{name}")
-    public String passName(@PathVariable String name){
+    public String passName(@PathVariable String name) {
         return name;
     }
 
+    //uc :4 create dto userData with firstName and lastName
+    //use post request method and pass firstName and lastName inside the body
+    //http://localhost:8080/hello/addUser
+    @PostMapping("addUser")
+    public String addUser(@RequestBody UserData user) {
+        return user.toString();
+    }
 }
