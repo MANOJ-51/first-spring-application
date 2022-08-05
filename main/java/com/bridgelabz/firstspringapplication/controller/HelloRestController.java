@@ -26,9 +26,29 @@ public class HelloRestController {
 
     //uc :4 create dto userData with firstName and lastName
     //use post request method and pass firstName and lastName inside the body
-    //http://localhost:8080/hello/addUser
+    //post - body - raw - json : http://localhost:8080/hello/addUser
     @PostMapping("addUser")
     public String addUser(@RequestBody UserData user) {
+        return user.toString();
+    }
+
+    //http://localhost:8080/hello/addUserParam?firstName=Manoj&lastName=Kumar
+    @PostMapping("addUserParam")
+    public String addUserParam(@RequestParam String firstName, @RequestParam String lastName) {
+        UserData user = new UserData();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        return user.toString();
+    }
+
+    //uc :5 use put request method and pass firstName as path variable
+    //put - http://localhost:8080/hello/updateUser?firstName=sai
+    @PutMapping("updateUser")
+    public String updateUser(@RequestParam String firstName) {
+        UserData user = new UserData();
+        user.setFirstName("Manoj");
+        user.setLastName("kumar");
+        user.setFirstName(firstName);
         return user.toString();
     }
 }
