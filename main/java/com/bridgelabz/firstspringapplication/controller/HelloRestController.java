@@ -17,4 +17,10 @@ public class HelloRestController {
         return "Hello " + name;
     }
 
+    //uc :3 pass name as path variable  //http://localhost:8080/hello/passName/sai
+    @GetMapping("passName/{name}")
+    public String passName(@PathVariable String name){
+        return name;
+    }
+
 }
